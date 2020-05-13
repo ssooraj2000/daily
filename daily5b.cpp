@@ -1,7 +1,6 @@
-//Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
-#include<iostream>
 //Given a 32-bit signed integer, reverse digits of an integer.
 
+#include<iostream>
 #include<cmath>
 #include<cstdlib>
 using namespace std; 
