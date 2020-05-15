@@ -1,8 +1,10 @@
+//Google Coding Interview 
+// You are given with an array of integers that contain numbers in random order. Write a program to find and return the number which occurs maximum times in the given input.If more than one element occurs same number of times in the input, return the element which is present in the input first. 
+// Input :132 12 2 11 12 2 1 2 2 11 1226 
+// Output : 2 
+
 #include <bits/stdc++.h> 
 using namespace std; 
-
-
-
 
 int main() 
 { 
