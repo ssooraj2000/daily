@@ -1,31 +1,17 @@
-//Given an unsorted array arr of size N, rearrange the elements of array such that number at the odd index is greater than the number at the previous even index. The task is to complete the function formatArray() which will return formatted array.
+//Given the value of n, we need to find the sum of the series where i-th term is sum of first i natural numbers.
 #include <bits/stdc++.h> 
 using namespace std; 
 
-void formatArray(int* arr, int n){
-	int i, temp;
-	for(i=1;i<n;i=i+2){
-		if(arr[i]<arr[i-1]){
-			temp=arr[i];
-			arr[i]=arr[i-1];
-			arr[i-1]=temp;
-		}
-	}
+int solve(int n){
+	return (n*(n+1)*(n+2))/6;
 }
 int main() 
 { 
 	int n;
 	cin>>n;
-	int i;
-	int* arr=(int*)malloc(sizeof(int)*n);
-	for(i=0;i<n;i++){
-		cin>>arr[i];
-	}
-	solve(arr, n);
-	for(i=0;i<n;i++){
-		cout<<arr[i]<<" ";
-	}
-	cout<<"\n";
+
+	cout<<solve(n)<<"\n";
+
 	return 0; 
 } 
 
