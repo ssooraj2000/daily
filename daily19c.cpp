@@ -1,4 +1,5 @@
-// Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+//Given an array of integers, find the first missing positive integer in linear time and constant space. In other words, find the lowest positive integer that does not exist in the array. The array can contain duplicates and negative numbers as well.
+#include <iostream>
 #include <bits/stdc++.h> 
 using namespace std; 
 
@@ -7,7 +8,13 @@ void solve(int* arr,int n){
     while(i<n){
         if(arr[i]==n){
             arr[i]*=-1;
+            
             swap(arr[n-1],arr[i]);
+            if(arr[i]<0){
+                arr[i]*=-1;
+                i++;
+            }
+
         }
         else if((arr[i]%n)-1==i){
             i++;
@@ -17,12 +24,17 @@ void solve(int* arr,int n){
         }
         else{
             arr[i]*=-1;
+      
             swap(arr[(abs(arr[i])%n)-1], arr[i]);
+            if(arr[i]<0){
+                arr[i]*=-1;
+                i++;
+            }
         }
     }
 
     for(i=0;i<n;i++){
-        if((abs(arr[i])%n)-1!=i){
+        if((-1*(arr[i])%n)-1!=i){
             cout<<i+1<<"\n";
             return;
         }
@@ -44,5 +56,4 @@ int main()
     }
     solve(arr,n);
   return 0;
-} 
-
+}
