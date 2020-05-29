@@ -28,7 +28,7 @@ int solve(int* arr,int n){
             arr[i]*=-1;
             count++;
             i++;
-        }
+        } 
         else if(arr[i]==n){
             arr[i]*=-1;
 
