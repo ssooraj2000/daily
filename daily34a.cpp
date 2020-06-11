@@ -1,3 +1,4 @@
+//Print leaders of an array in O(n) time complexity and O(1) space complexity.
 #include <bits/stdc++.h> 
 using namespace std;
 
@@ -6,14 +7,14 @@ void solve(int* arr,int n){
     vector<int> v;
     v.push_back(arr[n-1]);
     int max=arr[n-1];
-    for(i=n-2;i>=0;i++){
+    for(i=n-2;i>=0;i--){
         if(arr[i]>max){
             v.push_back(arr[i]);
             max=arr[i];
         }
     }    
-    v.reserve(v.size());
-    for(i=v.begin();i<v.size();i++){
+    
+    for(i=v.size()-1;i>=0;i--){
         cout<<v[i]<<" ";
     }
     cout<<"\n";
