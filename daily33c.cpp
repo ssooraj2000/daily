@@ -1,41 +1,31 @@
-// Find a common element in all rows of a row wise sorted matrix.
+// This problem was asked by Google.
+
+// Given an array of integers and a number k, where 1 <= k <= length of the array, compute the maximum values of each subarray of length k.
 #include <bits/stdc++.h> 
 using namespace std;
 
-void solve(int** arr, int n, int m){
-    int i, j;
-    map<int, int> hash;
-    for(i=0;i<n;i++){
-        for(j=0;j<m;j++){
-            if(hash[arr[i][j]]==i){
-                hash[arr[i][j]]++;
-            }
-        }
-    }
-    for(auto k=hash.begin();k!=hash.end();k++){
-        if(k->second==n){
-            cout<<k->first<<" ";
-        }
-    }
-    cout<<"\n";
+void solve(int* arr,int n,int* finalans){
+    int i, j=0;
+    for(i=0;i<n-1;i++){
+        finalans[j++]=(*max_element(arr+i, arr+i+3));
+    }    
+
 }
 int main() 
 {  
     int n;
     cin>>n;
-    int m;
-    cin>>m;
-    int** arr=(int**)malloc(sizeof(int*)*n);
+    int* arr=(int*)malloc(sizeof(int)*n);
+    
     int i;
     for(i=0;i<n;i++){
-        arr[i]=(int*)malloc(sizeof(int)*m);
+        cin>>arr[i];
     }
-    int j;
-    for(i=0;i<n;i++){
-        for(j=0;j<m;j++){
-            cin>>arr[i][j];
-        }
+    int* finalans=(int*)malloc(sizeof(int)*(n-2));
+    solve(arr,n, finalans);
+    for(i=0;i<n-2;i++){
+        cout<<finalans[i]<<" ";
     }
-    solve(arr, n, m);
+    cout<<"\n";
     return 0;
 } 
