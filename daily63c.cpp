@@ -1,43 +1,70 @@
-//refered completely from gfg
-// A number is called as a Jumping Number if all adjacent digits in it differ by 1. The difference between ‘9’ and ‘0’ is not considered as 1.
-// All single digit numbers are considered as Jumping Numbers. For example 7, 8987 and 4343456 are Jumping numbers but 796 and 89098 are not.
-
-// Given a positive number x, print all Jumping Numbers smaller than or equal to x. The numbers can be printed in any order.
+// Given a Boolean Matrix, find k such that all elements in k’th row are 0 and k’th column are 1. If no such exist then print -1.
 #include <bits/stdc++.h> 
 using namespace std;
 
-void solve(int n, int x){
-    queue<int> q;
-    q.push(n);
-    while(!q.empty()){
-        n=q.front();
-        q.pop();
-        if(n<=x){
-            cout<<n<<" ";
-            int last_dig=n%10;
-            if(last_dig==0){
-                q.push(n*10 + last_dig+1);
+int solve(int** arr, int n)
+{
+    int i, j, count;
+    map<int, int >hash;
+    for(i=0;i<n;i++){
+        count=0;
+        for(j=0;j<n;j++){
+            if(i!=j){
+                if(arr[i][j]==0){
+                    count++;
+                }
+                else{
+                    break;
+                }
             }
-            else if(last_dig==9){
-                q.push(n*10 + last_dig-1);
-            }
-            else{
-                q.push(n*10 + last_dig-1);
-                q.push(n*10 + last_dig+1);
-            }
-
+        }
+        if(count==n-1){
+            hash[i]++;
         }
     }
+    for(auto k=hash.begin();k!=hash.end();k++){
+        count=0;
+        for(j=0;j<n;j++){
+            if(j!=k->first){
+                if(arr[j][k->first]==1){
+                    count++;
+                }
+                else{
+                    break;
+                }
+            }
+        }
+        if(count==n-1){
+            k->second++;
+        }
+    }
+    for(auto k=hash.begin();k!=hash.end();k++){
+        if(k->second==2){
+            return k->first;
+        }
+    }
+    return -1;
 }
-
 int main(){
     int n;
     cin>>n;
+    
+    int** arr=(int**)malloc(sizeof(int*)*n);
+
     int i;
-    cout<<0<<" ";
-    for(i=1;i<=9;i++){
-        solve(i, n);
+
+    for(i=0;i<n;i++){
+        arr[i]=(int*)malloc(sizeof(int)*n);
     }
-    cout<<"\n";
+
+    int j;
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            cin>>arr[i][j];
+        }
+    }
+    
+    cout<<solve(arr, n)<<"\n";
+    
     return 0;
 }
