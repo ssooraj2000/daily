@@ -13,14 +13,13 @@ vector<int> solve(vector<int> arr, int d){
     return arr;
 }
 int main(){
-    vector<int> arr;
     int n, d, i;
     cin>>n;
     cin>>d;
+    vector<int> arr(n);
+
     for(i=0;i<n;i++){
-        int data;
-        cin>>data;
-        arr.push_back(data);
+        cin>>arr[i];
     }
     vector<int> result=solve(arr, d);
 
