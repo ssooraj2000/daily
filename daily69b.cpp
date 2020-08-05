@@ -6,15 +6,14 @@ long solve(int n, vector<vector<int>>q){
     for(int i=0;i<n;i++){
         arr[i]=0;
     }
+    long max=LONG_MIN;
+
     for(int i=0;i<q.size();i++){
         for(int j=q[i][0]-1;j<q[i][1];j++){
             arr[j]+=q[i][2];
-        }
-    }
-    long max=LONG_MIN;
-    for(int i=0;i<n;i++){
-        if(arr[i]>max){
-            max=arr[i];
+            if(arr[j]>max){
+                max=arr[j];
+            }
         }
     }
     return max;
