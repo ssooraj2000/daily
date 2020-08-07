@@ -3,11 +3,7 @@ using namespace std;
 
 long solve(int n, vector<vector<int>>q){
     vector<long>arr(n);
-    for(int i=0;i<n;i++){
-        arr[i]=0;
-    }
     long max=LONG_MIN;
-
     for(int i=0;i<q.size();i++){
         for(int j=q[i][0]-1;j<q[i][1];j++){
             arr[j]+=q[i][2];
