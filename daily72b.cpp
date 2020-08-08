@@ -2,22 +2,27 @@
 using namespace std;
 
 void solve(vector<int> arr){
-    map<int, int>hash;
-    so
-    int ans=-1;
-    for(int i=0;i<arr.size();i++){
-        hash[arr[i]]++;
-    }
-    for(int i=0;i<arr.size()-1;i++){
-        for(int j=0;j<arr.size();j++){
-            hash[arr[i]]--;
-            if(hash[arr[j]-arr[i]]>=1){
+    int i, j, k, ans=-1, mid;
+    sort(arr.begin(), arr.end());
+
+    for(i=arr.size()-1;i>=2;i--){
+        j=0;
+        k=i-1;
+        while(j<k){
+            if(arr[j]+arr[k]==arr[i]){
                 if(ans==-1){
                     ans=0;
                 }
                 ans++;
+                k--;
+                j++;
             }
-            hash[arr[i]]++;
+            else if(arr[j]+arr[k]>arr[i]){
+                k--;
+            }
+            else{
+                j++;
+            }
         }
     }
     cout<<ans<<"\n";
