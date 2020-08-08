@@ -25,7 +25,7 @@ void solve(vector<int> arr){
             }
         }
     }
-    cout<<ans<<"\n";
+    cout<<ans<<"\n"; 
 }
 int main(){
     int t, n;
